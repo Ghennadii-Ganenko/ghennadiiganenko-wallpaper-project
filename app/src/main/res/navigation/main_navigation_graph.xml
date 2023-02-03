@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.ghennadiiganenko.android.wallpaper.fragments.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.ghennadiiganenko.android.wallpaper.fragments.categories.CategoriesFragment"
+        tools:layout="@layout/fragment_categories">
+        <action
+            android:id="@+id/action_categories_to_wallpaper"
+            app:destination="@id/wallpaperFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wallpaperFragment"
+        android:name="com.ghennadiiganenko.android.wallpaper.fragments.wallpapers.WallpapersFragment"
+        tools:layout="@layout/fragment_wallpapers">
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue=""/>
+        <action
+            android:id="@+id/action_wallpapersFragment_to_imageFragment"
+            app:destination="@id/imageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageFragment"
+        android:name="com.ghennadiiganenko.android.wallpaper.fragments.image.ImageFragment"
+        android:label="ImageFragment"
+        tools:layout="@layout/fragment_image">
+        <argument
+            android:name="image_url"
+            app:argType="string"
+            android:defaultValue=""/>
+    </fragment>
+</navigation>
